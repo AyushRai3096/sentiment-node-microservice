@@ -13,7 +13,11 @@ app.use(cors());
 
 app.use(homepageRouter);
 
+var server_port = process.env.PORT || 8888;
+
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+
 const server = http.createServer(app);
-server.listen(8081, () => {
+server.listen(server_port, server_ip_address, () => {
     console.log("Server running at port 8081");
 });
